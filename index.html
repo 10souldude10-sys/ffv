@@ -311,15 +311,23 @@
     }
     .dict-submit:hover { opacity: .85; transform: translateY(-1px); }
     .dict-submit:active { transform: scale(.97); }
-    @media (max-width: 480px) {
-      .dict-form { flex-direction: column; }
+    @media (max-width: 600px) {
+      .dict-card { padding: 1.75rem 1.25rem; }
+      .dict-form { flex-direction: column; gap: 12px; }
       .dict-input {
-        width: 100%;
-        height: 56px;
+        width: 100% !important;
+        flex: none;
+        height: 60px;
         font-size: 16px;
         padding: 0 18px;
+        border-radius: 16px;
       }
-      .dict-submit { width: 100%; height: 52px; font-size: 16px; }
+      .dict-submit {
+        width: 100% !important;
+        height: 56px;
+        font-size: 16px;
+        border-radius: 16px;
+      }
     }
 
     /* ══════════════════════════════
