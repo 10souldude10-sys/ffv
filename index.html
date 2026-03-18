@@ -2546,7 +2546,9 @@ a { touch-action: manipulation; }
 <!-- GENERIC IFRAME MODAL -->
 <div id="iframe-modal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
   <div style="background:#fff;border-radius:16px;width:100vw;height:100vh;border-radius:0 !important;position:relative;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.3);">
-    <button onclick="document.getElementById('iframe-modal').style.display='none';document.body.style.overflow='';document.getElementById('generic-iframe').src='';" style="position:absolute;top:12px;right:12px;z-index:10;width:32px;height:32px;border-radius:50%;border:none;background:rgba(0,0,0,0.15);cursor:pointer;font-size:18px;color:#333;line-height:32px;text-align:center;">×</button>
+    <button onclick="document.getElementById('iframe-modal').style.display='none';document.body.style.overflow='';document.getElementById('generic-iframe').src='';" style="position:absolute;top:76px;right:12px;z-index:10;width:32px;height:32px;border-radius:50%;border:none;background:rgba(0,0,0,0.7);cursor:pointer;font-size:18px;color:#fff;line-height:32px;text-align:center;">×</button>
+    <!-- Logo kapatma overlay -->
+    <div style="position:absolute;top:0;left:0;width:340px;height:64px;z-index:9;background:transparent;pointer-events:all;cursor:default;"></div>
     <iframe id="generic-iframe" src="" allow="fullscreen;autoplay;presentation" allowfullscreen style="width:100%;height:100%;border:none;border-radius:0;"></iframe>
   </div>
 </div>
@@ -2554,7 +2556,9 @@ a { touch-action: manipulation; }
 <!-- FLASHCARD MODAL -->
 <div id="fc-modal" style="display:none;position:fixed;inset:0;z-index:9000;background:rgba(0,0,0,0.7);backdrop-filter:blur(6px);align-items:center;justify-content:center;">
   <div style="background:#fff;border-radius:16px;width:100vw;height:100vh;border-radius:0 !important;position:relative;overflow:hidden;box-shadow:0 32px 80px rgba(0,0,0,0.3);">
-    <button onclick="document.getElementById('fc-modal').style.display='none';document.body.style.overflow='';" style="position:absolute;top:12px;right:12px;z-index:10;width:32px;height:32px;border-radius:50%;border:none;background:rgba(0,0,0,0.15);cursor:pointer;font-size:18px;color:#333;line-height:32px;text-align:center;">×</button>
+    <button onclick="document.getElementById('fc-modal').style.display='none';document.body.style.overflow='';" style="position:absolute;top:76px;right:12px;z-index:10;width:32px;height:32px;border-radius:50%;border:none;background:rgba(0,0,0,0.7);cursor:pointer;font-size:18px;color:#fff;line-height:32px;text-align:center;">×</button>
+    <!-- Logo kapatma overlay -->
+    <div style="position:absolute;top:0;left:0;width:340px;height:64px;z-index:9;background:transparent;pointer-events:all;cursor:default;"></div>
     <iframe id="fc-iframe" src="" allow="fullscreen;autoplay;presentation" allowfullscreen style="width:100%;height:100%;border:none;border-radius:0;"></iframe>
   </div>
 </div>
