@@ -3656,9 +3656,20 @@ document.addEventListener('click', function(e) {
    MOBILE SEARCH
 ═══════════════════════════════════════ */
 function openMobSearch() {
+  // Dashboard'a geç (zaten açıksa dokunma)
+  const dash = document.getElementById('page-dash');
+  if (!dash.classList.contains('active')) {
+    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
+    dash.classList.add('active');
+    currentUnitId = null;
+    currentLessonId = null;
+    buildSidebar();
+    document.getElementById('site-footer').style.display = 'block';
+  }
+  // Overlay yerine topbar search gizli olduğu için mob overlay aç
   const el = document.getElementById('mob-search-overlay');
   el.classList.add('open');
-  setTimeout(() => document.getElementById('mob-search-input').focus(), 100);
+  setTimeout(() => document.getElementById('mob-search-input').focus(), 50);
 }
 function closeMobSearch() {
   document.getElementById('mob-search-overlay').classList.remove('open');
@@ -3672,23 +3683,8 @@ function closeMobSearch() {
   document.getElementById('mob-search-input').value = '';
 }
 function mobSearch(val) {
-  const q = val.trim();
-  searchQuery = q;
-
-  // Dashboard aktif değilse sessizce geçiş yap — beyaz ekran olmasın
-  const dash = document.getElementById('page-dash');
-  if (!dash.classList.contains('active')) {
-    // Tüm sayfaları gizle, sadece dash'i göster
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    dash.classList.add('active');
-    currentUnitId = null;
-    currentLessonId = null;
-    buildSidebar();
-    document.getElementById('site-footer').style.display = 'block';
-  }
-
-  // Hemen render — eş zamanlı
-  renderDashGrid();
+  searchQuery = val.trim();
+  renderDashGrid(); // dashboard zaten aktif, direkt render
 }
 
 /* ═══════════════════════════════════════
