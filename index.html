@@ -1757,10 +1757,15 @@ a { text-decoration: none; color: inherit; }
 /* Mobil search overlay */
 .mob-search-overlay {
   display: none;
-  position: fixed; inset: 0; z-index: 600;
-  background: var(--bg);
-  padding: 12px 12px;
-  align-items: flex-start; flex-direction: column;
+  position: fixed;
+  top: var(--topbar-h);
+  left: 0; right: 0;
+  z-index: 600;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 10px 12px;
+  align-items: center; flex-direction: row;
+  box-shadow: 0 4px 16px rgba(0,0,0,0.10);
 }
 .mob-search-overlay.open { display: flex; }
 .mob-search-overlay-inner {
@@ -3656,19 +3661,9 @@ document.addEventListener('click', function(e) {
    MOBILE SEARCH
 ═══════════════════════════════════════ */
 function openMobSearch() {
-  // Dashboard'a geç (zaten açıksa dokunma)
-  const dash = document.getElementById('page-dash');
-  if (!dash.classList.contains('active')) {
-    document.querySelectorAll('.page').forEach(p => p.classList.remove('active'));
-    dash.classList.add('active');
-    currentUnitId = null;
-    currentLessonId = null;
-    buildSidebar();
-    document.getElementById('site-footer').style.display = 'block';
-  }
-  // Overlay yerine topbar search gizli olduğu için mob overlay aç
-  const el = document.getElementById('mob-search-overlay');
-  el.classList.add('open');
+  // Sayfa geçişi YOK — mevcut sayfa görünmeye devam eder
+  // Sadece topbar altında arama çubuğu açılır
+  document.getElementById('mob-search-overlay').classList.add('open');
   setTimeout(() => document.getElementById('mob-search-input').focus(), 50);
 }
 function closeMobSearch() {
@@ -3684,7 +3679,18 @@ function closeMobSearch() {
 }
 function mobSearch(val) {
   searchQuery = val.trim();
-  renderDashGrid(); // dashboard zaten aktif, direkt render
+  // Dashboard aktif değilse animasyonsuz geç
+  const dash = document.getElementById('page-dash');
+  if (!dash.classList.contains('active')) {
+    document.querySelectorAll('.page').forEach(p => { p.classList.remove('active'); p.style.display = ''; });
+    dash.style.animation = 'none';
+    dash.classList.add('active');
+    currentUnitId = null; currentLessonId = null;
+    buildSidebar();
+    document.getElementById('site-footer').style.display = 'block';
+    requestAnimationFrame(() => { dash.style.animation = ''; });
+  }
+  renderDashGrid();
 }
 
 /* ═══════════════════════════════════════
